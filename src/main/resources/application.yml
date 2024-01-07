@@ -13,3 +13,12 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+
+  #Oauth2 config
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            .client-id: 433736958720-sckk4toceg61vr2cjj5b0viscga5961l.apps.googleusercontent.com
+            .client-secret: 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
