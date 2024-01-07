@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -29,7 +28,7 @@ public class GoogleOAuth2SuccessHandler implements AuthenticationSuccessHandler 
     @Autowired
     private UserRepository userRepository;
 
-    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
@@ -46,6 +45,7 @@ public class GoogleOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             user.setRoles(roles);
             userRepository.save(user);
         }
+        redirectStrategy.sendRedirect(request, response, "/");
     }
 
     @Override
