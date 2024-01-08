@@ -45,6 +45,16 @@ public class SecurityConfig {
                         .loginPage("/login").permitAll()
                         .failureUrl("/login?error= true")
                         .defaultSuccessUrl("/", true)
+                        .successHandler(((request, response, authentication) ->
+                        {
+                            if (authentication != null && authentication.getAuthorities().stream()
+                                    .anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"))) {
+                                response.sendRedirect("/admin");
+                            } else {
+                                response.sendRedirect("/");
+                            }
+                        }
+                        ))
                         .usernameParameter("email")
                         .passwordParameter("password")
                 )
@@ -67,11 +77,6 @@ public class SecurityConfig {
                 );
         return http.build();
     }
-
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(customUserDetailService);
-//    }
-
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

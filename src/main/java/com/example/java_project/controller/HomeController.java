@@ -4,6 +4,7 @@ import com.example.java_project.global.GlobalData;
 import com.example.java_project.service.CategoryService;
 import com.example.java_project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class HomeController {
     @GetMapping({"/", "/home"})
     public String homePage(Model model) {
         model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getAllProduct());
         return "index";
     }
 
@@ -50,5 +52,12 @@ public class HomeController {
         model.addAttribute("cartCount", GlobalData.cart.size());
 
         return "viewProduct";
+    }
+
+    //
+    @GetMapping("/contact")
+    public String viewContact(Model model) {
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "contact";
     }
 }

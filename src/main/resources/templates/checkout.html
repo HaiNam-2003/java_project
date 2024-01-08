@@ -8,236 +8,360 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="/static/assets/img/favicon.png">
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" th:href="@{assets/css/all.min.css}" href="/static/assets/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" th:href="@{assets/bootstrap/css/bootstrap.min.css}"
+          href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" th:href="@{assets/css/owl.carousel.css}" href="/static/assets/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" th:href="@{assets/css/magnific-popup.css}">
+    <!-- animate css -->
+    <link rel="stylesheet" th:href="@{assets/css/animate.css}">
+    <!-- mean menu css -->
+    <link rel="stylesheet" th:href="@{assets/css/meanmenu.min.css}">
+    <!-- main style -->
+    <link rel="stylesheet" th:href="@{assets/css/main.css}">
+    <!-- responsive -->
+    <link rel="stylesheet" th:href="@{assets/css/responsive.css}">
     <title>Document</title>
 </head>
 <body>
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto"></ul>
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
-                </li>
-                <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}">0</span>
-                </li>
-            </ul>
-
-        </div>
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
     </div>
-</nav>
-<div class="container">
+</div>
+<!--PreLoader Ends-->
 
-    <!--Section: Block Content-->
-    <section class="mt-5 mb-4">
-
-        <!--Grid row-->
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
         <div class="row">
-
-            <!--Grid column-->
-            <div class="col-lg-8 mb-4">
-
-                <!-- Card -->
-                <div class="card wish-list pb-1">
-                    <div class="card-body">
-
-                        <h5 class="mb-2">Billing details</h5>
-
-                        <!-- Grid row -->
-                        <div class="row">
-
-                            <!-- Grid column -->
-                            <div class="col-lg-6">
-
-                                <!-- First name -->
-                                <div class="md-form md-outline mb-0 mb-lg-4">
-                                    <label for="firstName">First name</label>
-                                    <input type="text" id="firstName" required class="form-control mb-0 mb-lg-2">
-                                </div>
-
-                            </div>
-                            <!-- Grid column -->
-
-                            <!-- Grid column -->
-                            <div class="col-lg-6">
-
-                                <!-- Last name -->
-                                <div class="md-form md-outline">
-                                    <label for="lastName">Last name</label>
-                                    <input type="text" id="lastName" required class="form-control">
-                                </div>
-
-                            </div>
-                            <!-- Grid column -->
-
-                        </div>
-                        <!-- Grid row -->
-
-
-
-                        <!-- Country -->
-                        <div class="d-flex flex-wrap">
-                            <div class="select-outline position-relative w-100">
-                                <label>Country - <strong>Viet Nam</strong></label>
-
-
-                            </div>
-                        </div>
-
-                        <!-- Address Part 1 -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="form14">Địa chỉ nhà</label>
-                            <input type="text" required id="form14" placeholder="Số nhà và tên đường..." class="form-control">
-                        </div>
-
-                        <!-- Address Part 2 -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="form15">Địa chỉ</label>
-                            <input type="text" id="form15" placeholder="Quận, Huyện, Phường,..."
-                                   class="form-control">
-                        </div>
-
-                        <!-- Postcode / ZIP -->
-                        <div class="md-form md-outline mt-3">
-                            <label for="form16">ZIP</label>
-                            <input type="text" maxlength="6" minlength="6" required id="form16" class="form-control">
-                        </div>
-
-                        <!-- Town / City -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="form17">Thành phố</label>
-                            <input type="text" required id="form17" class="form-control">
-
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="form18">Số điện thoại</label>
-                            <input type="number" minlength="10" maxlength="10" required id="form18" class="form-control">
-                        </div>
-
-                        <!-- Email address -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="form19">Email</label>
-                            <input type="email" required id="form19" class="form-control">
-                        </div>
-
-                        <!-- Additional information -->
-                        <div class="md-form md-outline mt-2">
-                            <label for="form76">Thông tin khác</label>
-                            <textarea id="form76" class="md-textarea form-control" rows="4"></textarea>
-                        </div>
-
-
-
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/">
+                            <img th:src="@{assets/img/logo.png}" alt="">
+                        </a>
                     </div>
-                </div>
-                <!-- Card -->
+                    <!-- logo -->
 
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-4">
-
-                <!-- Card -->
-                <div class="card mb-4">
-                    <div class="card-body">
-
-                        <h5 class="mb-3">Tổng tiền thanh toán </h5>
-
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                Số tiền phải trả
-                                <span><span th:text="${total}"></span> đ</span>
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item">
+                                <a th:href="@{/}" href="/">Home</a>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                Vận chuyển
-                                <span>Miễn phí</span>
+                            <li><a th:href="@{/shop}" href="/shop">Shop</a></li>
+                            <li>
+                                <a href="#">About</a>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                <div>
-                                    <strong>Tổng tiền thanh toán</strong>
-                                    <strong>
-                                        <p class="mb-0">(bao gồm thuế)</p>
-                                    </strong>
+                            <li><a th:href="@{/contact}" href="/contact">Contact</a></li>
+                            <li>
+                                <a sec:authorize="isAnonymous()" th:href="@{/login}" href="/login">Login</a>
+                            </li>
+                            <li>
+                                <a sec:authorize="isAuthenticated()" th:href="@{/logout}" href="/logout">Logout</a>
+                            </li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" th:href="@{/cart}" href="#"><i class="fas fa-shopping-cart"></i></a>
+                                    <span class="shopping-cart text-white" th:text="${cartCount}">0</span>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
-                                <span><strong><span th:text="${total}"></span> đ</strong></span>
                             </li>
                         </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
 
-                        <form action="" method="post" th:action="@{/payNow}" >
-                            <button type="submit"  class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
-                        </form>
-
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
                     </div>
                 </div>
-                <!-- Card -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
 
-                <!-- Card -->
-                <div class="card mb-4">
-                    <div class="card-body">
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Fresh and Organic</p>
+                    <h1>Check Out Product</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
 
-                        <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
-                           aria-expanded="false" aria-controls="collapseExample">
-                            Add a discount code (optional)
-                            <span><i class="fas fa-chevron-down pt-1"></i></span>
-                        </a>
+<!-- check out section -->
+<div class="checkout-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-accordion-wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Địa chỉ
+                                    </button>
+                                </h5>
+                            </div>
 
-                        <div class="collapse" id="collapseExample">
-                            <div class="mt-3">
-                                <div class="md-form md-outline mb-0">
-                                    <input type="text" id="discount-code" class="form-control font-weight-light"
-                                           placeholder="Enter discount code">
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="billing-address-form">
+                                        <form>
+                                            <p><input type="text" placeholder="Name"></p>
+                                            <p><input type="email" placeholder="Email"></p>
+                                            <p><input type="text" placeholder="Address"></p>
+                                            <p><input type="tel" placeholder="Phone"></p>
+                                            <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Shipping Address
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shipping-address-form">
+                                        <p>Your shipping address form is here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Card Details
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="card-details">
+                                        <p>Your card details goes here.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <!-- Card -->
-
             </div>
-            <!--Grid column-->
 
+            <div class="col-lg-4">
+                <div class="order-details-wrap">
+                    <table class="order-details">
+                        <thead>
+                        <tr>
+                            <th>Chi tiết đơn hàng</th>
+                            <th>Giá</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>Sản Phẩm</td>
+                            <td>Tổng</td>
+                        </tr>
+                        <tbody class="order-details-body" th:each="item, iStat : ${cart}">
+                        <tr>
+                            <td th:text="${item.name}"></td>
+                            <td th:text="${item.price} + đ"></td>
+                        </tr>
+                        </tbody>
+                        <tbody class="checkout-details">
+                        <tr>
+                            <td>Tiền SP</td>
+                            <td th:text="${total} + đ"></td>
+                        </tr>
+                        <tr>
+                            <td>Vận chuyển</td>
+                            <td>Miễn phí</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền thanh toán</td>
+                            <td th:text="${total} + đ"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="#" class="boxed-btn">Thanh Toán</a>
+                </div>
+            </div>
         </div>
-        <!--Grid row-->
-
-    </section>
-    <!--Section: Block Content-->
-
-
+    </div>
 </div>
+<!-- end check out section -->
 
+<!-- logo carousel -->
+<div class="logo-carousel-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="logo-carousel-inner">
+                    <div class="single-logo-item">
+                        <img src="assets/img/company-logos/1.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="assets/img/company-logos/2.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="assets/img/company-logos/3.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="assets/img/company-logos/4.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="assets/img/company-logos/5.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end logo carousel -->
 
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li>34/8, East Hukupara, Gifirtok, Sadan.</li>
+                        <li>support@fruitkha.com</li>
+                        <li>+00 111 222 3333</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Pages</h2>
+                    <ul>
+                        <li><a th:href="@{/}" href="/">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a th:href="@{/shop}" href="/shop">Shop</a></li>
+                        <li><a th:href="@{/contact}" href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form>
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
+                    Distributed By - <a href="https://themewagon.com/">Themewagon</a>
+                </p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end copyright -->
 
+<!-- jquery -->
+<script th:src="@{/assets/js/jquery-1.11.3.min.js}"></script>
+<!-- bootstrap -->
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+<!-- count down -->
+<script th:src="@{/assets/js/jquery.countdown.js}"></script>
+<!-- isotope -->
+<script th:src="@{/assets/js/jquery.isotope-3.0.6.min.js}"></script>
+<!-- waypoints -->
+<script th:src="@{/assets/js/waypoints.js}"></script>
+<!-- owl carousel -->
+<script th:src="@{/assets/js/owl.carousel.min.js}"></script>
+<!-- magnific popup -->
+<script th:src="@{/assets/js/jquery.magnific-popup.min.js}"></script>
+<!-- mean menu -->
+<script th:src="@{/assets/js/jquery.meanmenu.min.js}"></script>
+<!-- sticker js -->
+<script th:src="@{/assets/js/sticker.js}"></script>
+<!-- main js -->
+<script th:src="@{/assets/js/main.js}"></script>
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"-->
+<!--        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
+<!--        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"-->
+<!--        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"-->
+<!--        crossorigin="anonymous"></script>-->
 </body>
 </html>

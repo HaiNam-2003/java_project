@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+    <!-- title -->
+    <title>Contact</title>
+
     <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="/static/assets/img/favicon.png">
     <!-- google font -->
@@ -32,9 +32,11 @@
     <link rel="stylesheet" th:href="@{/assets/css/main.css}">
     <!-- responsive -->
     <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
-    <title>Document</title>
+
 </head>
 <body>
+
+<!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
         <div class="circle"></div>
@@ -51,7 +53,7 @@
                     <!-- logo -->
                     <div class="site-logo">
                         <a href="/">
-                            <img th:src="@{assets/img/logo.png}" alt="">
+                            <img src="assets/img/logo.png" alt="">
                         </a>
                     </div>
                     <!-- logo -->
@@ -109,7 +111,7 @@
         </div>
     </div>
 </div>
-<!-- end search area -->
+<!-- end search arewa -->
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
@@ -117,8 +119,8 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="breadcrumb-text">
-                    <p>Fresh and Organic</p>
-                    <h1>Cart</h1>
+                    <p>Get 24/7 Support</p>
+                    <h1>Contact us</h1>
                 </div>
             </div>
         </div>
@@ -126,108 +128,70 @@
 </div>
 <!-- end breadcrumb section -->
 
-<!-- cart -->
-<div class="cart-section mt-150 mb-150">
+<!-- contact form -->
+<div class="contact-from-section mt-150 mb-150">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12">
-                <div class="cart-table-wrap">
-                    <table class="cart-table">
-                        <thead class="cart-table-head">
-                        <tr class="table-head-row">
-                            <th class="product-remove"></th>
-                            <th class="product-image">Hình ảnh</th>
-                            <th class="product-name">Tên SP</th>
-                            <th class="product-price">Giá cả</th>
-                            <th class="product-quantity">Trọng lượng</th>
-                        </tr>
-                        </thead>
-                        <tbody th:each="item, iStat : ${cart}">
-                        <tr class="table-body-row" >
-                            <td class="product-remove"><a th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"><i class="far fa-window-close"></i></a></td>
-                            <td class="product-image"><img th:src="@{${'/productImages/' + item.imageName}}"
-                                                           src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                                           alt="Sample"></td>
-                            <td class="product-name" th:text="${item.name}"></td>
-                            <td class="product-price" th:text="${item.price} + đ"></td>
-                            <td class="product-quantity" th:text="${item.weight} + grams"></td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="form-title">
+                    <h2>Have you any question?</h2>
+                </div>
+                <div id="form_status"></div>
+                <div class="contact-form">
+                    <form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+                        <p>
+                            <input type="text" placeholder="Name" name="name" id="name">
+                            <input type="email" placeholder="Email" name="email" id="email">
+                        </p>
+                        <p>
+                            <input type="tel" placeholder="Phone" name="phone" id="phone">
+                            <input type="text" placeholder="Subject" name="subject" id="subject">
+                        </p>
+                        <p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p>
+                        <input type="hidden" name="token" value="FsWga4&@f6aw" />
+                        <p><input type="submit" value="Submit"></p>
+                    </form>
                 </div>
             </div>
-
             <div class="col-lg-4">
-                <div class="total-section">
-                    <table class="total-table">
-                        <thead class="total-table-head">
-                        <tr class="table-total-row">
-                            <th>Tổng</th>
-                            <th>Giá tiền</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="total-data">
-                            <td><strong>Tiền SP: </strong></td>
-                            <td th:text="${total} + đ"></td>
-                        </tr>
-                        <tr class="total-data">
-                            <td><strong>Vận chuyển: </strong></td>
-                            <td>Miễn phí</td>
-                        </tr>
-                        <tr class="total-data">
-                            <td><strong>Tổng tiền: </strong></td>
-                            <td th:text="${total} + đ"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="cart-buttons">
-                        <a th:href="@{/checkout}" class="boxed-btn black">Thanh Toán</a>
+                <div class="contact-form-wrap">
+                    <div class="contact-form-box">
+                        <h4><i class="fas fa-map"></i> Shop Address</h4>
+                        <p>34/8, East Hukupara <br> Gifirtok, Sadan. <br> Country Name</p>
                     </div>
-                </div>
-
-                <div class="coupon-section">
-                    <h3>Mã Giảm</h3>
-                    <div class="coupon-form-wrap">
-                        <form>
-                            <p><input type="text" placeholder="Coupon"></p>
-                            <p><input type="submit" value="Apply"></p>
-                        </form>
+                    <div class="contact-form-box">
+                        <h4><i class="far fa-clock"></i> Shop Hours</h4>
+                        <p>MON - FRIDAY: 8 to 9 PM <br> SAT - SUN: 10 to 8 PM </p>
+                    </div>
+                    <div class="contact-form-box">
+                        <h4><i class="fas fa-address-book"></i> Contact</h4>
+                        <p>Phone: 123456789 <br> Email: hainam@gmail.com</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- end cart -->
+<!-- end contact form -->
 
-<!-- logo carousel -->
-<div class="logo-carousel-section">
+<!-- find our location -->
+<div class="find-location blue-bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="logo-carousel-inner">
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/1.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/2.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/3.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/4.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/5.png" alt="">
-                    </div>
-                </div>
+            <div class="col-lg-12 text-center">
+                <p> <i class="fas fa-map-marker-alt"></i> Find Our Location</p>
             </div>
         </div>
     </div>
 </div>
-<!-- end logo carousel -->
+<!-- end find our location -->
+
+<!-- google map section -->
+<div class="embed-responsive embed-responsive-21by9">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26432.42324808999!2d-118.34398767954286!3d34.09378509738966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf07045279bf%3A0xf67a9a6797bdfae4!2sHollywood%2C%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1576846473265!5m2!1sen!2sbd" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
+</div>
+<!-- end google map section -->
+
 
 <!-- footer -->
 <div class="footer-area">
@@ -264,7 +228,7 @@
                 <div class="footer-box subscribe">
                     <h2 class="widget-title">Subscribe</h2>
                     <p>Subscribe to our mailing list to get the latest updates.</p>
-                    <form>
+                    <form action="index.html">
                         <input type="email" placeholder="Email">
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
@@ -274,6 +238,7 @@
     </div>
 </div>
 <!-- end footer -->
+
 <!-- copyright -->
 <div class="copyright">
     <div class="container">
@@ -320,14 +285,5 @@
 <!-- main js -->
 <script th:src="@{/assets/js/main.js}"></script>
 
-<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"-->
-<!--        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
-<!--        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
-<!--        crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"-->
-<!--        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"-->
-<!--        crossorigin="anonymous"></script>-->
 </body>
 </html>
