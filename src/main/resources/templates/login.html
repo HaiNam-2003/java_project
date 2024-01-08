@@ -1,83 +1,171 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Document</title>
 </head>
+<style>
+    .divider:after,
+    .divider:before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+    }
+
+    .h-custom {
+        height: calc(100% - 73px);
+    }
+
+    @media (max-width: 450px) {
+        .h-custom {
+            height: 100%;
+        }
+    }
+</style>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
+                 class="d-inline-block align-top" alt=""/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto"></ul>
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" th:href="@{/}" href="#">home</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Sign Up</a>
-        </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}" href="#">home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Sign Up</a>
+                </li>
 
-      </ul>
+            </ul>
 
+        </div>
     </div>
-  </div>
 </nav>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <h2>Login</h2>
-      <p>Please fill out this to login</p>
-      <form th:action="@{/login}" method="post">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="Your Email" class="form-control form-control-lg">
-        </div>
+    <!--  <div class="row">-->
+    <!--    <div class="col-sm-6">-->
+    <!--      <h2>Login</h2>-->
+    <!--      <p>Please fill out this to login</p>-->
+    <!--      <form th:action="@{/login}" method="post">-->
+    <!--        <div class="form-group">-->
+    <!--          <label for="email">Email</label>-->
+    <!--          <input type="email" name="email" id="email" placeholder="Your Email" class="form-control form-control-lg">-->
+    <!--        </div>-->
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" id="password">
-        </div>
-        <div th:if="${param.error}" class="alert alert-error text-danger">
-          Invalid username or password.
-        </div>
+    <!--        <div class="form-group">-->
+    <!--          <label for="password">Password</label>-->
+    <!--          <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" id="password">-->
+    <!--        </div>-->
+    <!--        <div th:if="${param.error}" class="alert alert-error text-danger">-->
+    <!--          Invalid username or password.-->
+    <!--        </div>-->
 
-        <input type="submit" value="Login" class="btn btn-primary btn-block">
-        <br>
-        <span >Don't have an account <a class="linkControl" href="./register.html"
-                                        th:href="@{/register}">Register here</a></span>
-        <br>
-        <a href="" th:href="@{/forgotpassword}">Forgot password ?</a>
-      </form>
-      <br>
-      <h3>OR</h3>
-      <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a>
+    <!--        <input type="submit" value="Login" class="btn btn-primary btn-block">-->
+    <!--        <br>-->
+    <!--        <span >Don't have an account <a class="linkControl" href="./register.html"-->
+    <!--                                        th:href="@{/register}">Register here</a></span>-->
+    <!--        <br>-->
+    <!--        <a href="" th:href="@{/forgotpassword}">Forgot password ?</a>-->
+    <!--      </form>-->
+    <!--      <br>-->
+    <!--      <h3>OR</h3>-->
+    <!--      <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a>-->
 
+    <!--    </div>-->
+
+    <!--  </div>-->
+    <div class="row pt-3">
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                             class="img-fluid" alt="Sample image">
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <form th:action="@{/login}" method="post">
+                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                                <p class="lead fw-normal mb-0 me-3 mr-2">Sign in with</p>
+                                <a th:href="@{/oauth2/authorization/google}" type="button"
+                                   class="btn btn-primary btn-floating mx-1 text-white">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                            </div>
+
+                            <div class="divider d-flex align-items-center my-4">
+                                <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="email">Email address</label>
+                                <input type="email" name="email" id="email" class="form-control form-control-lg"
+                                       placeholder="Enter a valid email address"/>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input type="password" name="password" id="password"
+                                       class="form-control form-control-lg"
+                                       placeholder="Enter password"/>
+                            </div>
+                            <div th:if="${param.error}" class="alert alert-error text-danger">
+                                Invalid username or password.
+                            </div>
+
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a class="linkControl" href="./register.html">Forgot password?</a>
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login
+                                </button>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
+                                    <a href="#!"
+                                       class="link-danger" th:href="@{/register}">Register</a>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-  </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 </html>

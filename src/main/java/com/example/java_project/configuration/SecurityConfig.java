@@ -1,6 +1,7 @@
 package com.example.java_project.configuration;
 
 import com.example.java_project.repo.UserRepository;
+import com.example.java_project.service.CustomOAuth2UserService;
 import com.example.java_project.service.CustomUserDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+    @Autowired
+    private CustomOAuth2UserService oAuth2UserService;
 
     @Autowired
     private CustomUserDetailService customUserDetailService;
@@ -46,8 +49,11 @@ public class SecurityConfig {
                         .passwordParameter("password")
                 )
                 .oauth2Login(o -> o
-                        .successHandler(googleOAuth2SuccessHandler)
                         .loginPage("/login")
+                        .successHandler(googleOAuth2SuccessHandler)
+                        .userInfoEndpoint(u -> u
+                                .userService(oAuth2UserService)
+                        )
                 )
                 .logout(l -> l
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
